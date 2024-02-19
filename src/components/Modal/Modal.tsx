@@ -36,9 +36,11 @@ const Modal = () => {
               className=" flex justify-center rounded-2xl bg-gray-600 my-5"
               style={{ width: "700px", padding: "50px" }}
             >
-              <AddForm onSubmit={function (data: FormData): void {
-                              throw new Error("Function not implemented.");
-                          } } />
+              <AddForm
+                onSubmit={function (data: FormData): void {
+                  throw new Error("Function not implemented.");
+                }}
+              />
               <div className="modal-action">
                 {/* <button className="btn" onClick={closeModal}>
                 Close
@@ -70,5 +72,3 @@ const Modal = () => {
     </>
   );
 };
-
-export { Modal };

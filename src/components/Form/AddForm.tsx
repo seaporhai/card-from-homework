@@ -13,6 +13,8 @@ interface FormProps {
 const AddForm: React.FC<FormProps> = ({ onSubmit }) => {
   const [data, setData] = useState<FormData>({
     name: "",
+    // id: "",
+    // name: "No Image",
     img: null,
   });
 
@@ -42,6 +44,11 @@ const AddForm: React.FC<FormProps> = ({ onSubmit }) => {
     e.preventDefault();
     onSubmit(data); // Pass form data to the parent component
   };
+  // const removeProfile = (idToRemove: any) => {
+  //   setProfiles((prevProfiles: any[]) =>
+  //     prevProfiles.filter((profile) => profile.id !== idToRemove)
+  //   );
+  // };
 
   return (
     <div>
@@ -49,7 +56,7 @@ const AddForm: React.FC<FormProps> = ({ onSubmit }) => {
         <div>
           <label htmlFor="name">Name:</label>
           <input
-            className="text-black"
+            className="text-black mb-[20px] rounded-md"
             type="text"
             id="name"
             name="name"
@@ -60,6 +67,7 @@ const AddForm: React.FC<FormProps> = ({ onSubmit }) => {
         <div>
           <label htmlFor="img">Image:</label>
           <input
+            className="text-black mb-[20px] rounded-md"
             type="file"
             id="image"
             name="image"
@@ -67,22 +75,35 @@ const AddForm: React.FC<FormProps> = ({ onSubmit }) => {
             accept="image/*"
           />
           {/* {data.img && (
-                // <img
-                //   src={data.img}
-                //   alt="Selected"
-                //   height={100}
-                //   width={100}
-                //   style={{ marginTop: "10px" }}
-                // />
+            <img
+              src={data.img}
+              alt="Selected"
+              height={100}
+              width={100}
+              style={{ marginTop: "10px" }}
+            />
           )} */}
         </div>
 
-        <button type="submit" className="bg-[green] w-[200px] rounded-md ">
+        <button type="submit" className="bg-[#97ca97] w-[200px] rounded-md hover:bg-[green]">
           Create Card
         </button>
       </form>
+      {/* <button
+        onClick={removeProfile}
+        className="bg-[red] text-[white]
+        w-[200px]
+        rounded-md
+      "
+      >
+        {" "}
+        delete
+      </button> */}
     </div>
   );
 };
 
 export { AddForm };
+function setProfiles(arg0: (prevProfiles: any[]) => any[]) {
+  throw new Error("Function not implemented.");
+}

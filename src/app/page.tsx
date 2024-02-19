@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Card } from "@/components/Card/Card";
-import { AddForm } from "@/components"; // Assuming Add component is not needed here
+import { AddForm } from "@/components";
 import Image from "next/image";
-import { Modal } from "@/components";
 
 const Page: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -12,17 +11,27 @@ const Page: React.FC = () => {
   });
 
   const handleSubmit = (data: { name: string; img: string | null }) => {
-    setFormData(data); // Update formData with the data received from the form
+    setFormData(data);
+  };
+
+  const removeProfile = () => {
+    setFormData({ name: "", img: null });
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <AddForm onSubmit={handleSubmit} />{" "}
-      {/* Pass handleSubmit function to AddForm */}
+    <div className="flex justify-center items-center border-2 ">
+      <AddForm onSubmit={handleSubmit} />
       {formData.name && formData.img && (
         <Card name={formData.name} img={formData.img}></Card>
       )}
-  
+      {formData.name && formData.img && (
+        <button
+          onClick={removeProfile}
+          className="bg-red-400 text-white rounded-md w-[150px] hover:bg-red-700 "
+        >
+          Delete
+        </button>
+      )}
     </div>
   );
 };
